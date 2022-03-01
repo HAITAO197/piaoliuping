@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import "@/assets/style/global.less"; // 引入全局样式文件
 
 Vue.config.productionTip = false;
 

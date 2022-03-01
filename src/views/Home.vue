@@ -45,7 +45,10 @@ export default {
     // 回
     replyMessage: debounce(async function () {
       console.log(123);
-      const { data } = await reply({ pid: this.message.id, msg: "" });
+      const { data } = await reply({
+        pid: this.message.id,
+        msg: this.replyMsg,
+      });
       // this.message = data.data;
       console.log(data);
     }),
@@ -56,3 +59,12 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.home {
+  max-width: 1000px;
+  height: 100%;
+  min-height: 500px;
+  background-color: #bfc;
+  margin: 0 auto;
+}
+</style>
