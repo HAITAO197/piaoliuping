@@ -50,6 +50,7 @@ export default {
       replyMsg: "",
       alert: "这是一条通知 : )",
       isAlertShow: false,
+      alertTimer: null,
     };
   },
   methods: {
@@ -62,7 +63,6 @@ export default {
     // 扔
     newMessage: debounce(async function () {
       const { data } = await create(this.newMsg);
-      // this.message = data.data;
       this.newMsg = "";
       this.alertMsg(data.msg);
       console.log(data);
@@ -74,7 +74,6 @@ export default {
         pid: this.message.id,
         msg: this.replyMsg,
       });
-      // this.message = data.data;
       this.replyMsg = "";
       this.alertMsg(data.msg);
       console.log(data);
@@ -83,10 +82,10 @@ export default {
     alertMsg(msg) {
       this.alert = msg;
       this.isAlertShow = true;
-      setTimeout(() => {
+      clearTimeout(this.alertTimer);
+      this.alertTimer = setTimeout(() => {
         this.isAlertShow = false;
       }, 1500);
-      // this.$refs.alertBox.style;
     },
   },
   created() {
